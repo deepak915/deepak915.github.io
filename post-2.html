@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>post-2.utf8.md</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Home</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="blog.html">Blog</a>
+</li>
+<li>
+  <a href="mailto:&lt;deepak19@outlook.com&gt;">
+    <span class="fa fa-envelope fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="http://github.com/moneykani/">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://twitter.com/deepak_dhankani">
+    <span class="fa fa-twitter fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<div id="blog-post-2-web-scraping-with-python" class="section level2">
+<h2>Blog Post 2: Web Scraping with Python</h2>
+<div id="december-19-2019" class="section level3">
+<h3>December 19, 2019</h3>
+</div>
+<div id="deepak-dhankani" class="section level3">
+<h3>Deepak Dhankani</h3>
+<p>Scraping <em>tabulated</em> data from webpages to build datasets is fairly straight forward with the BeautifulSoup library in Python. However, it takes meticulous effort to extract the data when it is embedded in non-tabulated formats. We will be scraping data from the two of the most common platforms: <strong>Wikipedia</strong> and <strong>IMDb</strong>.</p>
+<div id="part-1" class="section level4">
+<h4>PART 1</h4>
+<p>BeautifulSoup is a robust Python library with numerous functions to facilitate webscraping. We will be extracting data from the Wikipedia page for: <em>Tech Companies in the NYC area.</em> First step is import <code>BeautifulSoup</code> (for web scraping), <code>urlopen</code> (to access data from the URL), and <code>pandas</code> for data manipulation.</p>
+<pre class="python"><code>from bs4 import BeautifulSoup as soup
+from urllib.request import urlopen as uReq
+import pandas as pd
+from IPython.display import Image
+import matplotlib.pyplot as plt
+import seaborn as sns</code></pre>
+<pre class="python"><code># storing the URL in a variable
+wiki_url = &#39;https://en.wikipedia.org/wiki/Tech_companies_in_the_New_York_metropolitan_area&#39;
+# establishing connection, grabbing the page
+url_client = uReq(wiki_url)</code></pre>
+<pre class="python"><code># offloading the content into a variable
+wiki_page = url_client.read()
+# closing connection
+url_client.close()</code></pre>
+<p>After we have loaded the URL and stored the webpage data into a variable, we can pass it into the BeautifulSoup function which makes it easier to call different webpage objects like classes, references, paragraphs, etc. The selected format for the data is <code>html</code>. In this case, <code>lxml</code> would also yield the same output.</p>
+<p>Pandas library has a <strong>read_html</strong> function that can extract table from an html object and store it into a dataframe, so it is usually a good practice to check if we can get the data using that function.</p>
+<pre class="python"><code>wiki_soup = soup(wiki_page, &quot;html.parser&quot;)
+df = pd.read_html(wiki_page)
+print(df)</code></pre>
+<pre><code>[    0                                                  1
+0 NaN  This list has no precise inclusion criteria as...]</code></pre>
+<p>Now that we know that there aren’t any table objects in the HTML data, we can dive deeper into the webpage configuration by going to the page, right clicking and selecting the <strong>Inspect</strong> option. Inspect tab shows that the <code>mw-parser-output</code> class contains all the company lists as well as the text data above and below it. The <code>find</code> function can be used to look at the contents of all the divisions under the specified class (Output is verbose, hence it is hidden).</p>
+<pre class="python"><code># found the class containing the list after inspecting
+wiki_soup.find(&#39;div&#39;,{&quot;class&quot;:&quot;mw-parser-output&quot;});</code></pre>
+<p>A further look through the contents of the <code>mw-parser-output</code> class shows that all the objects are tagged in HTML list tags <code>&lt;li&gt;</code>, which is can be iterated over and stored in an array! The <code>find_all</code> function with paraments <em>li</em> and <em>mw-parser-output</em> can be used to accomplish this. A for loop can be used to iterate over the HTML lists and append the values into an empty array <strong>company_list</strong>. However, this stores all the description texts into the array as well and since the list objects had no class name associated to them, we can pass an empty class and this should solve the problem!</p>
+<pre class="python"><code>company_list = []
+for company in wiki_soup.find_all(&#39;li&#39;,{&quot;class&quot;:&quot;&quot;}):
+    company_list.append(company.text)
+    
+last = company_list.index(&#39;BioValley&#39;)
+company_list = company_list[0:last]
+print(company_list[:7])</code></pre>
+<pre><code>[&#39;FanDuel[8]&#39;, &#39;Moonit&#39;, &#39;Trello[9]&#39;, &#39;Enigma Technologies [10]&#39;, &#39;IBM Watson&#39;, &#39;MongoDB&#39;, &#39;BetterCloud[11][12]&#39;]</code></pre>
+<p>Now that we have an array (python list) containing the required data, we need to clean up a couple of things before proceeding with any further analysis. Firstly, the list also contains some stray text objects in the end. These can be removed by checking the index of the last company name on the list (‘BioValley’) and slicing the <strong>company_list</strong> at that index. Secondly, we can see that the company names also include numbers enclosed in square brackets (most likely the reference numbers from the article bibliography section). This can be cleaned by writing a <strong>Regex</strong> function to eliminating all the non-alphabetic characters in the list of strings.</p>
+<pre class="python"><code>#Another way of extracting the company names, however the output from this required more manual cleaning
+alt_list = []
+for company in wiki_soup.find_all(&#39;a&#39;,{&quot;class&quot;:&quot;&quot;}):
+    alt_list.append(company.text.title())
+#Third way
+#for company in wiki_soup.find_all(&#39;ul&#39;):
+#    print(company.text)</code></pre>
+<p>The <code>re.sub</code> function takes in the ‘[^A-Za-z]’ which specifies substituting any non-alphabetic characters with with an empty string in the interator variable <strong>element</strong> from the <strong>company_list</strong>. The clean output is stored into a new list called <strong>clean_list</strong>, which is then converted into a pandas dataframe.</p>
+<pre class="python"><code># Regex Library 
+import re
+# new array for clean data
+clean_list = []
+# implementing regex on all list objects
+for element in company_list:
+    clean_list.append(re.sub(&#39;[^A-Za-z]&#39;,&#39;&#39;,element))
+
+# list to dataframe
+company_df = pd.DataFrame(clean_list)
+company_df.columns = [&#39;Company_Name&#39;]
+print(company_df.head())
+print(company_df.shape)</code></pre>
+<pre><code>         Company_Name
+0             FanDuel
+1              Moonit
+2              Trello
+3  EnigmaTechnologies
+4           IBMWatson
+(109, 1)</code></pre>
+<p>We finally obtain a dataset of 109 tech companies in the NYC area, which could help with job search for anyone looking for jobs in Tech! The only downside for the above Regex is that it also gets rid of spaces but for now, I am not sure how to fix that but I will come back to it once I am more fluent with Regex.</p>
+</div>
+<div id="part-2" class="section level4">
+<h4>PART 2</h4>
+<p>Since every webpage is different when comes to embedded data, it is good practice to scrape data from another prominent source - IMDb. In this part, we will be using the <em>top 100 movies of all time IMDb list</em>! It is interesting to note that IMDb switched its page format in the recent months, due to which the movies are not tabulated anymore, instead they show up in blocks. See below for a comparison between the two:</p>
+<p><strong>Old View (Tabulated):</strong> <img src="old_view.png" alt="old" /></p>
+<p><strong>New View (Embedded):</strong> <img src="new_view.png" alt="new" /></p>
+<p>The embedded form presents an interesting challenge for us, so firstly, we will read in the URL, store the contents in a variable and pass it into the BeautifulSoup function with <em>html.parser</em> parameter.</p>
+<pre class="python"><code>imdb_url = &#39;https://www.imdb.com/list/ls055592025/&#39;
+imdb_page = uReq(imdb_url).read()
+imdb_soup = soup(imdb_page, &quot;html.parser&quot;)
+imdb_soup.find(&#39;table&#39;)</code></pre>
+<p>A quick look at the <strong>imdb_page</strong> HTML content shows that there are no <code>&lt;tr&gt;</code> tags (HTML tabulated data), which means we will have to proceed further with the <strong>Inspect</strong> option on the browser to find out the class heirarchy. The <code>lister-list</code> class contains all the movie blocks on the page and there are atleast 5 other classes in the heirarchy below <code>lister-list</code>.</p>
+<p>Iterating over the contents of <code>lister-list</code> and selecting <code>h3</code> HTML tag yields the movie rank, movie name, and the year of release. This data is appended into <strong>movie_list</strong> array, which turns out to have a length of 100 (equal to the total number of movies), thus we don’t have any data to slice out.</p>
+<pre class="python"><code>imdb_lister = imdb_soup.find(&#39;div&#39;,{&quot;class&quot;:&quot;lister-list&quot;})</code></pre>
+<pre class="python"><code>movie_list = []
+for movie in imdb_lister.findAll(&#39;h3&#39;):
+    movie_list.append(movie.text)
+
+print(movie_list[0:3])
+print(len(movie_list))</code></pre>
+<pre><code>[&#39;\n1.\nThe Godfather\n(1972)\n&#39;, &#39;\n2.\nThe Shawshank Redemption\n(1994)\n&#39;, &quot;\n3.\nSchindler&#39;s List\n(1993)\n&quot;]
+100</code></pre>
+<p>The above data does not contain movie ratings, which is essential for our data analysis. After looking at the <strong>Inspect</strong> tab of the browser, we find that the <code>lister-list</code> class has 5 levels of heirarchy below it and one of the bottom most branches named <code>ipl-rating-star__rating</code> class contains the rating information. In the below function, we iterate over the parent class of the rating <code>ipl-rating-widget</code> and extract the text out of <code>span</code> tag with the class <code>ipl-rating-star__rating</code>. All the ratings are stored in <strong>imdb_rating</strong> array (final length 100).</p>
+<p>Figuring out this heirarchical behavior was not very straight forward, I tried multiple methods and finally streamlined the final version to the above method. This part took a while but I learned a lot while getting over this hurdle!</p>
+<pre class="python"><code>imdb_rating = []
+
+for element in imdb_lister.findAll(&#39;div&#39;,{&quot;class&quot;:&quot;ipl-rating-widget&quot;}):
+    imdb_rating.append(element.find(&#39;span&#39;,{&#39;class&#39;:&#39;ipl-rating-star__rating&#39;}).text)
+    
+print(imdb_rating[0:5])</code></pre>
+<pre><code>[&#39;9.2&#39;, &#39;9.3&#39;, &#39;8.9&#39;, &#39;8.2&#39;, &#39;8.5&#39;]</code></pre>
+<p>Data cleaning steps involve: - Converting the <strong>movie_list</strong> array into a dataframe and splitting the column into 3 separate columns using <code>str.split</code> by the occurance of ‘\n’ - Converting the <strong>imdb_rating</strong> array into a dataframe and merging the two dataframes and assigning relevant column names</p>
+<pre class="python"><code>movie_df = pd.DataFrame(movie_list)
+movie_df.columns = [&#39;all_data&#39;]
+split_df = movie_df[&#39;all_data&#39;].str.split(&#39;\\n&#39;,n = 4, expand = True)</code></pre>
+<pre class="python"><code>split_df.head()</code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+0
+</th>
+<th>
+1
+</th>
+<th>
+2
+</th>
+<th>
+3
+</th>
+<th>
+4
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+0
+</th>
+<td>
+</td>
+<td>
+1.
+</td>
+<td>
+The Godfather
+</td>
+<td>
+(1972)
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<th>
+1
+</th>
+<td>
+</td>
+<td>
+2.
+</td>
+<td>
+The Shawshank Redemption
+</td>
+<td>
+(1994)
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<th>
+2
+</th>
+<td>
+</td>
+<td>
+3.
+</td>
+<td>
+Schindler’s List
+</td>
+<td>
+(1993)
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<th>
+3
+</th>
+<td>
+</td>
+<td>
+4.
+</td>
+<td>
+Raging Bull
+</td>
+<td>
+(1980)
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<th>
+4
+</th>
+<td>
+</td>
+<td>
+5.
+</td>
+<td>
+Casablanca
+</td>
+<td>
+(1942)
+</td>
+<td>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The n was set to 4 as there are 4 occurances of ‘\n’ in each record, so to get rid of all of them extra columns 0 and 4 are created. We can now assign rows 1, 2, and 3 back to <strong>movie_df</strong> with relevant column names and also merge the ratings data into <strong>movie_df</strong>.</p>
+<pre class="python"><code>movie_df[&#39;Movie_Rank&#39;] = split_df[1]
+movie_df[&#39;Movie_Name&#39;] = split_df[2]
+movie_df[&#39;Release_Year&#39;] = split_df[3]
+movie_df[&#39;Rating&#39;] = pd.DataFrame(imdb_rating)[0]</code></pre>
+<pre class="python"><code>movie_df.head()</code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+all_data
+</th>
+<th>
+Movie_Rank
+</th>
+<th>
+Movie_Name
+</th>
+<th>
+Release_Year
+</th>
+<th>
+Rating
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+0
+</th>
+<td>
+1.Godfather(1972)
+</td>
+<td>
+1.
+</td>
+<td>
+The Godfather
+</td>
+<td>
+(1972)
+</td>
+<td>
+9.2
+</td>
+</tr>
+<tr>
+<th>
+1
+</th>
+<td>
+2.Shawshank Redemption(1994)
+</td>
+<td>
+2.
+</td>
+<td>
+The Shawshank Redemption
+</td>
+<td>
+(1994)
+</td>
+<td>
+9.3
+</td>
+</tr>
+<tr>
+<th>
+2
+</th>
+<td>
+3.’s List(1993)
+</td>
+<td>
+3.
+</td>
+<td>
+Schindler’s List
+</td>
+<td>
+(1993)
+</td>
+<td>
+8.9
+</td>
+</tr>
+<tr>
+<th>
+3
+</th>
+<td>
+4.Bull(1980)
+</td>
+<td>
+4.
+</td>
+<td>
+Raging Bull
+</td>
+<td>
+(1980)
+</td>
+<td>
+8.2
+</td>
+</tr>
+<tr>
+<th>
+4
+</th>
+<td>
+5.(1942)
+</td>
+<td>
+5.
+</td>
+<td>
+Casablanca
+</td>
+<td>
+(1942)
+</td>
+<td>
+8.5
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Final data cleaning steps involve: - Dropping the <strong>all_data</strong> column - Removing the <strong>.</strong> from the Movie_Rank - Removing the parentheses from the Release_Year</p>
+<pre class="python"><code>movie_df = movie_df.drop(columns = &#39;all_data&#39;)
+movie_df[&#39;Movie_Rank&#39;] = movie_df[&#39;Movie_Rank&#39;].str.replace(&#39;[^0-9]&#39;,&#39;&#39;)
+movie_df[&#39;Release_Year&#39;] = movie_df[&#39;Release_Year&#39;].str.replace(&#39;[^0-9]&#39;,&#39;&#39;)
+movie_df.Release_Year = movie_df.Release_Year.astype(&#39;int32&#39;)
+movie_df.Movie_Rank = movie_df.Movie_Rank.astype(&#39;int32&#39;)</code></pre>
+<pre class="python"><code>movie_df.head()</code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>
+</th>
+<th>
+Movie_Rank
+</th>
+<th>
+Movie_Name
+</th>
+<th>
+Release_Year
+</th>
+<th>
+Rating
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+0
+</th>
+<td>
+1
+</td>
+<td>
+The Godfather
+</td>
+<td>
+1972
+</td>
+<td>
+9.2
+</td>
+</tr>
+<tr>
+<th>
+1
+</th>
+<td>
+2
+</td>
+<td>
+The Shawshank Redemption
+</td>
+<td>
+1994
+</td>
+<td>
+9.3
+</td>
+</tr>
+<tr>
+<th>
+2
+</th>
+<td>
+3
+</td>
+<td>
+Schindler’s List
+</td>
+<td>
+1993
+</td>
+<td>
+8.9
+</td>
+</tr>
+<tr>
+<th>
+3
+</th>
+<td>
+4
+</td>
+<td>
+Raging Bull
+</td>
+<td>
+1980
+</td>
+<td>
+8.2
+</td>
+</tr>
+<tr>
+<th>
+4
+</th>
+<td>
+5
+</td>
+<td>
+Casablanca
+</td>
+<td>
+1942
+</td>
+<td>
+8.5
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Finally, we have clean, tabulated data for the top Hollywood 100 movies of all time! When the candidate has used the company list from part 1 to secure a job, this dataset could come in handy for a consolidated list of movies to watch before joining!</p>
+<pre class="python"><code>#movie_df.info()
+sns.set(color_codes=True)
+sns.distplot(movie_df.Release_Year, bins = 8, kde = False).set_title(&#39;Top 100 Movies by Decade&#39;,fontsize = 20)
+plt.xlabel(&quot;Movie Release&quot;, fontsize = 15)
+plt.ylabel(&quot;Number of Movies&quot;,fontsize = 15)
+plt.tick_params(labelsize=10)</code></pre>
+<div class="figure">
+<img src="output_34_0.png" alt="png" />
+<p class="caption">png</p>
+</div>
+<p>The histogram shows that 1950-1970 produced the most number of all time Top 100 movies.</p>
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
