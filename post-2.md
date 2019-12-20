@@ -1,7 +1,8 @@
+---
+title: "Blog Post 2: Advanced Web Scraping with Python"
+date: "December 19, 2019"
+---
 
-## Blog Post 2: Web Scraping with Python
-### December 19, 2019
-### Deepak Dhankani
 
 Scraping _tabulated_ data from webpages to build datasets is fairly straight forward with the BeautifulSoup library in Python. However, it takes meticulous effort to extract the data when it is embedded in non-tabulated formats. We will be scraping data from the two of the most common platforms: **Wikipedia** and **IMDb**.
 

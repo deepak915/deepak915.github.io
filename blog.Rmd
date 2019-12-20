@@ -10,4 +10,4 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## [Blog Post 1: Web Scraping with R](post-1.html)
 
-## [Blog Post 2: Web Scraping with Python](post-2.html)
+## [Blog Post 2: Advanced Web Scraping with Python](post-2.html)
